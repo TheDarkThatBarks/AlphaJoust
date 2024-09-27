@@ -166,7 +166,7 @@ namespace SharpNeat.EvolutionAlgorithms
         public void StartContinue()
         {
             // RunState must be Ready or Paused.
-            if(RunState.Ready == _runState)
+            if (RunState.Ready == _runState)
             {   
                 // Create a new Coroutine and start it running.
                 _runState = RunState.Running;
