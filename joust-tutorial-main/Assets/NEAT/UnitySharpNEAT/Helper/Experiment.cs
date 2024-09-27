@@ -167,7 +167,7 @@ namespace UnitySharpNEAT
 
             NeatEvolutionAlgorithm<NeatGenome> ea = new NeatEvolutionAlgorithm<NeatGenome>(_eaParams, speciationStrategy, complexityRegulationStrategy);
 
-            // Create black box evaluator       
+            // Create black box evaluator
             BlackBoxFitnessEvaluator evaluator = new BlackBoxFitnessEvaluator(_neatSupervisor);
 
             IGenomeDecoder<NeatGenome, IBlackBox> genomeDecoder = CreateGenomeDecoder();
@@ -179,7 +179,6 @@ namespace UnitySharpNEAT
 
             //ea.Initialize(selectiveEvaluator, genomeFactory, genomeList);
             ea.Initialize(innerEvaluator, genomeFactory, genomeList);
-
             return ea;
         }
         #endregion

@@ -452,6 +452,7 @@
 -analyzer:"C:/Program Files/Unity 6000.0.4f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"C:/Program Files/Unity 6000.0.4f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 -analyzer:"C:/Program Files/Unity 6000.0.4f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll"
+"Assets/NEAT/Assets/LevelUnitController.cs"
 "Assets/NEAT/UnitySharpNEAT/CarExperiment/Scripts/CarController.cs"
 "Assets/NEAT/UnitySharpNEAT/CarExperiment/Scripts/GoalPiece.cs"
 "Assets/NEAT/UnitySharpNEAT/CarExperiment/Scripts/RoadPiece.cs"

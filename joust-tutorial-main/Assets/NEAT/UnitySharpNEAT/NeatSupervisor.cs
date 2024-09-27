@@ -119,16 +119,17 @@ namespace UnitySharpNEAT
         /// Starts the NEAT algorithm.
         /// </summary>
         public void StartEvolution()
-        {
+        {   
             if (EvolutionAlgorithm != null && EvolutionAlgorithm.RunState == SharpNeat.Core.RunState.Running)
                 return;
-
+            
             DeactivateAllUnits();
 
             Utility.Log("Starting Experiment.");
             _startTime = DateTime.Now;
 
             EvolutionAlgorithm = Experiment.CreateEvolutionAlgorithm(ExperimentIO.GetSaveFilePath(Experiment.Name, ExperimentFileType.Population));
+            Debug.Log("DEBUG");
             EvolutionAlgorithm.UpdateEvent += new EventHandler(HandleUpdateEvent);
             EvolutionAlgorithm.PausedEvent += new EventHandler(HandlePauseEvent);
             EvolutionAlgorithm.StartContinue();
@@ -228,6 +229,8 @@ namespace UnitySharpNEAT
             return controller;
         }
 
+        private int yOffset = 10;
+
         /// <summary>
         /// Instantiates a Unit in case no Unit can be drawn from the _unusedUnitPool.
         /// </summary>
@@ -237,8 +240,13 @@ namespace UnitySharpNEAT
 
             if (_spawnParent != null)
                 controller.transform.parent = _spawnParent;
-            else
-                controller.transform.parent = this.transform;
+            else {
+                Transform newTransform = this.transform;
+                //newTransform.position.Set(newTransform.position.x, newTransform.position.y + yOffset, newTransform.position.z);
+                newTransform.position = new Vector3(this.transform.position.x, this.transform.position.y + yOffset, this.transform.position.z);
+                controller.transform.parent = newTransform;
+                //yOffset += 10;
+            }
 
             _blackBoxMap.Add(box, controller);
             return controller;

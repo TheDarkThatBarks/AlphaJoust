@@ -173,8 +173,9 @@ namespace SharpNeat.EvolutionAlgorithms
 
             // Speciate the genomes.
             _specieList = _speciationStrategy.InitializeSpeciation(_genomeList, _eaParams.SpecieCount);
-            //Debug.Assert(!TestForEmptySpecies(_specieList), "Speciation resulted in one or more empty species.");
-            
+            UnityEngine.Debug.Log("DEBUG");
+            UnityEngine.Debug.Assert(!TestForEmptySpecies(_specieList), "Speciation resulted in one or more empty species.");
+
             // Sort the genomes in each specie fittest first, secondary sort youngest first.
             SortSpecieGenomes();
 
