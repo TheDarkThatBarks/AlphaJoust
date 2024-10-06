@@ -3,20 +3,22 @@ using UnityEngine;
 
 public class ScoreboardUI : MonoBehaviour
 {
+    [SerializeField] ScoreManager _scoreManager;
+
     [SerializeField] TMP_Text _score;
     [SerializeField] Transform _playerLivesContainer;
     [SerializeField] GameObject _playerLifePrefab;
 
     void Start()
     {
-        ScoreManager.Instance.OnScoreChanged += OnScoreChanged;
-        ScoreManager.Instance.OnLivesChanged += OnLivesChanged;
+        _scoreManager.OnScoreChanged += OnScoreChanged;
+        _scoreManager.OnLivesChanged += OnLivesChanged;
     }
 
     void OnDisable()
     {
-        ScoreManager.Instance.OnScoreChanged -= OnScoreChanged;
-        ScoreManager.Instance.OnLivesChanged -= OnLivesChanged;
+        _scoreManager.OnScoreChanged -= OnScoreChanged;
+        _scoreManager.OnLivesChanged -= OnLivesChanged;
         RemoveExtraPlayerLifeIcons(0);
     }
 

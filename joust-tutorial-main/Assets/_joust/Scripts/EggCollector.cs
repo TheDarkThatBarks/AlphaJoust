@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class EggCollector : MonoBehaviour
 {
+    [SerializeField] ScoreManager _scoreManager;
+
     void OnCollisionEnter2D(Collision2D other)
     {
         Debug.Log($"EggCollector {name} collided with {other.collider.gameObject.name}");
@@ -31,7 +33,7 @@ public class EggCollector : MonoBehaviour
 
     void Collect(Component pickup)
     {
-        ScoreManager.Instance.ScorePickup(pickup.transform.position);
+        _scoreManager.ScorePickup(pickup.transform.position);
         Destroy(pickup.gameObject);
     }
 }

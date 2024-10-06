@@ -6,12 +6,13 @@ public class GameOverUI : MonoBehaviour
 {
     [SerializeField] TMP_Text _score;
     [SerializeField] InputManagerBase _inputManager;
+    [SerializeField] ScoreManager _scoreManager;
 
     IInputManager InputManager => _inputManager.InputManager;
 
     void Start()
     {
-        _score.text = ScoreManager.Score.ToString();
+        _score.text = _scoreManager.ToString();
         InputManager.OnFlapPressed += OnFlapPressed;
     }
 

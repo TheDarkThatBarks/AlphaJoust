@@ -5,10 +5,11 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] EnemyManager _enemyManager;
     [SerializeField] Spawner _playerSpawner;
+    [SerializeField] ScoreManager _scoreManager;
     
     public void PlayerMountDespawned()
     {
-        if (ScoreManager.Instance.Lives > 0)
+        if (_scoreManager.Lives > 0)
         {
             _playerSpawner.SpawnPlayer();
         }
@@ -27,20 +28,20 @@ public class GameManager : MonoBehaviour
 
     void StartGame()
     {
-        ScoreManager.Instance.ResetScore();
+        _scoreManager.ResetScore();
         SubscribeToEvents();
         StartWave();
     }
 
     void SubscribeToEvents()
     {
-        ScoreManager.Instance.OnLivesChanged += OnLivesChanged;
+        _scoreManager.OnLivesChanged += OnLivesChanged;
         _enemyManager.EnemyDestroyed += OnEnemyDestroyed;
     }
 
     void UnsubscribeFromEvents()
     {
-        ScoreManager.Instance.OnLivesChanged -= OnLivesChanged;
+        _scoreManager.OnLivesChanged -= OnLivesChanged;
         _enemyManager.EnemyDestroyed -= OnEnemyDestroyed;
     }
 
@@ -64,12 +65,12 @@ public class GameManager : MonoBehaviour
 
     void StartWave()
     {
-        _enemyManager.SpawnEnemies(ScoreManager.Instance.Wave * 2 + 1);
+        _enemyManager.SpawnEnemies(_scoreManager.Wave * 2 + 1);
     }
     
     void NextWave()
     {
-        ScoreManager.Instance.NextWave();
+        _scoreManager.NextWave();
         StartWave();
     }
 }

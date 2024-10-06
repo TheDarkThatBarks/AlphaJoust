@@ -1,12 +1,12 @@
 using System;
 using UnityEngine;
 
-public class ScoreManager : SingletonMonoBehavior<ScoreManager>
+public class ScoreManager : MonoBehaviour
 {
     public event Action<int> OnScoreChanged = delegate(int i) {  };
     public event Action<int> OnLivesChanged = delegate(int i) {  };
     
-    public static int Score { get; private set; } 
+    public int Score { get; private set; } 
     public int Lives { get; private set; }
     public int Wave { get; private set; }
 
