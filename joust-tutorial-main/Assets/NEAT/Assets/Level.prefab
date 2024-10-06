@@ -48,6 +48,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3bd70f5520ddd04793879c90b4e5329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 2568562250829850285}
+  input: {fileID: 2568562250829850275}
+  scoreManager: {fileID: 3207517761041289130}
+  enemyParent: {fileID: 8695395076289457986}
 --- !u!1 &172702562114911447
 GameObject:
   m_ObjectHideFlags: 0
@@ -1828,6 +1832,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyManager: {fileID: 2732545700313217487}
   _playerSpawner: {fileID: 1702539215495809212}
+  _scoreManager: {fileID: 3207517761041289130}
 --- !u!114 &3828131680512604908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1855,7 +1860,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3547647833332159945
 Transform:
   m_ObjectHideFlags: 0
@@ -2239,6 +2244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ab8d9acba54d54e9191396b5e87667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _scoreManager: {fileID: 3207517761041289130}
   _spawners:
   - {fileID: 1702539215495809212}
   - {fileID: 8093207892394028079}
@@ -2295,6 +2301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ec32cee5f2d3ae40900945e26d72e42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _scoreManager: {fileID: 3207517761041289130}
   _score: {fileID: 1877297925903238336}
   _playerLivesContainer: {fileID: 5320313889961864437}
   _playerLifePrefab: {fileID: 4308527386166450146, guid: e884be96fe5c86c4d9e41013040efc47, type: 3}
@@ -2653,6 +2660,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7833859060028420600}
     m_Modifications:
+    - target: {fileID: 3954470094230717396, guid: b920ed834b3ee9a4a8fdf7ab0019239b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3954470094230717401, guid: b920ed834b3ee9a4a8fdf7ab0019239b, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2705,11 +2716,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8840873792317833294, guid: b920ed834b3ee9a4a8fdf7ab0019239b, type: 3}
+      propertyPath: _scoreManager
+      value: 
+      objectReference: {fileID: 3207517761041289130}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b920ed834b3ee9a4a8fdf7ab0019239b, type: 3}
+--- !u!114 &2568562250829850275 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3954470094230717397, guid: b920ed834b3ee9a4a8fdf7ab0019239b, type: 3}
+  m_PrefabInstance: {fileID: 1532424932887618934}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 201997426e219544d80a8bfbcde481dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2568562250829850285 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3954470094230717403, guid: b920ed834b3ee9a4a8fdf7ab0019239b, type: 3}

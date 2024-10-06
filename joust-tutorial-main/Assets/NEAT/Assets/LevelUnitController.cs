@@ -9,23 +9,36 @@ using UnitySharpNEAT;
 /// </summary>
 public class LevelUnitController : UnitController
 {
+    [SerializeField] private Transform player;
+    [SerializeField] private PlayerInputManager input;
+    [SerializeField] private ScoreManager scoreManager;
+    [SerializeField] private Transform enemyParent;
+
     protected override void UpdateBlackBoxInputs(ISignalArray inputSignalArray)
     {
+        inputSignalArray[0] = scoreManager.Score;
+        inputSignalArray[1] = player.position.x;
+        inputSignalArray[2] = player.position.y;
+
+        int iSignalArrayIndex = 3;
+        for(int i = 0; i < enemyParent.childCount; i++)
+        {
+            inputSignalArray[iSignalArrayIndex] = 0;
+            inputSignalArray[iSignalArrayIndex+1] = enemyParent.GetChild(i).transform.position.x;
+            inputSignalArray[iSignalArrayIndex+2] = enemyParent.GetChild(i).transform.position.x;
+            iSignalArrayIndex += 3;
+
+        }
+
         // Called by the base class on FixedUpdate
 
         // Feed inputs into the Neural Net (IBlackBox) by modifying its InputSignalArray
         // The size of the input array corresponds to NeatSupervisor.NetworkInputCount
-
-
-        /* EXAMPLE */
-        //inputSignalArray[0] = someSensorValue;
-        //inputSignalArray[1] = someOtherSensorValue;
-        //...
-        inputSignalArray[0] = 1;
     }
 
     protected override void UseBlackBoxOutpts(ISignalArray outputSignalArray)
     {
+
         // Called by the base class after the inputs have been processed
 
         // Read the outputs and do something with them
@@ -36,6 +49,11 @@ public class LevelUnitController : UnitController
         //someMoveDirection = outputSignalArray[0];
         //someMoveSpeed = outputSignalArray[1];
         //...
+        input.FireMoveEvent(new Vector2((float)outputSignalArray[0], (float)outputSignalArray[1]));
+        if (outputSignalArray[2] == 1)
+            input.FireFlapEvent();
+
+
     }
 
     public override float GetFitness()
@@ -45,7 +63,7 @@ public class LevelUnitController : UnitController
         // The performance of this unit, i.e. it's fitness, is retrieved by this function.
         // Implement a meaningful fitness function here
 
-        return 0;
+        return scoreManager.Score;
     }
 
     protected override void HandleIsActiveChanged(bool newIsActive)

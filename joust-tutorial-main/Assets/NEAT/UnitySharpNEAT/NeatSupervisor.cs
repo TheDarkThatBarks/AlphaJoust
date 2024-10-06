@@ -33,10 +33,10 @@ namespace UnitySharpNEAT
         private string _experimentConfigFileName = "experiment.config";
 
         [SerializeField]
-        private int _networkInputCount = 5;
+        private int _networkInputCount = 99;
 
         [SerializeField]
-        private int _networkOutputCount = 2;
+        private int _networkOutputCount = 4;
 
 
         [Header("Evaluation Settings")]

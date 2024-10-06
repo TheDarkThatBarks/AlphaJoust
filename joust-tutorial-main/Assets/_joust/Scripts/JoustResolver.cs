@@ -20,8 +20,8 @@ public class JoustResolver : MonoBehaviour
         SpawnMount();
         
         if (RemovedEnemy()) return;
-        
-        ScoreManager.Instance.KillPlayer(this.gameObject);
+
+        FindObjectOfType<ScoreManager>().KillPlayer(this.gameObject);
         Destroy(gameObject);
     }
 

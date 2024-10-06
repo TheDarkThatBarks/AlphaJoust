@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
+    [SerializeField] ScoreManager _scoreManager;
+
     public event Action EnemyDestroyed = delegate { };
     public int EnemiesRemaining => _enemies.Count;
 
@@ -27,7 +29,7 @@ public class EnemyManager : MonoBehaviour
     {
         if (!_enemies.Contains(enemyInputManager)) return;
         SoundManager.Instance.PlayKillSound();
-        ScoreManager.Instance.ScoreKill();
+        _scoreManager.ScoreKill();
         _enemies.Remove(enemyInputManager);
         Destroy(enemyInputManager.gameObject);
         EnemyDestroyed();

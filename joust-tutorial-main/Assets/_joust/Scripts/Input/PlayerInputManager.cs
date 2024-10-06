@@ -24,4 +24,16 @@ public class PlayerInputManager : InputManagerBase, IInputManager
     {
         OnQuitPressed();
     }
+
+    // Used for AI agent
+    public void FireMoveEvent(Vector2 movement)
+    {
+        Movement = movement;
+        OnMoveReceived(Movement);
+    }
+    public void FireFlapEvent()
+    {
+        OnFlapPressed();
+    }
+    // our ai agent doesn't need to quit XD
 }
