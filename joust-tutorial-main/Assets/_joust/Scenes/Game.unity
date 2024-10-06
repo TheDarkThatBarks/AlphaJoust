@@ -148,8 +148,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _experimentConfigFileName: JoustExperiment.config
-  _networkInputCount: 1
-  _networkOutputCount: 1
+  _networkInputCount: 15
+  _networkOutputCount: 3
   Trials: 1
   TrialDuration: 20
   StoppingFitness: 15
