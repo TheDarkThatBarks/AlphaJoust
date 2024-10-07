@@ -18,8 +18,9 @@ public class Teleporter : MonoBehaviour
     void Teleport()
     {
         var position = transform.position;
-        position.x *= -1f;
+        position.x *= -0.98f;
         transform.position = position;
         transform.eulerAngles = transform.position.x > 0 ? new Vector3(0, 180, 0) : Vector3.zero;
+
     }
 }

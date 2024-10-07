@@ -229,7 +229,7 @@ namespace UnitySharpNEAT
             return controller;
         }
 
-        private int yOffset = 10;
+        private int yOffset = 20;
 
         /// <summary>
         /// Instantiates a Unit in case no Unit can be drawn from the _unusedUnitPool.

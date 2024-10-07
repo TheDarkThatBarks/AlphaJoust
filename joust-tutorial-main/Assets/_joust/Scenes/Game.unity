@@ -152,7 +152,7 @@ MonoBehaviour:
   _networkOutputCount: 3
   Trials: 1
   TrialDuration: 20
-  StoppingFitness: 15
+  StoppingFitness: 5000
   _unitControllerPrefab: {fileID: 5720085425896047731, guid: 9cae3211290e5114ca303e5fe2a99ad4, type: 3}
   _spawnParent: {fileID: 0}
   _enableDebugLogging: 0
