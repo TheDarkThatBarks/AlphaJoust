@@ -22,7 +22,7 @@ public class JoustResolver : MonoBehaviour
         if (RemovedEnemy()) return;
 
         FindObjectOfType<ScoreManager>().KillPlayer(this.gameObject);
-        Destroy(gameObject);
+        // Destroy(gameObject);
     }
 
     bool LostJoust(JoustResolver opponent)

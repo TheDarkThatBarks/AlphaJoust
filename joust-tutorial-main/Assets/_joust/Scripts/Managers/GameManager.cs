@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
         if (lives < 1)
         {
             _enemyManager.DestroyAllEnemies();
-            SceneManager.LoadScene("Game Over", LoadSceneMode.Single);
+            // SceneManager.LoadScene("Game Over", LoadSceneMode.Single);
             Debug.Log("Game over");
         }
     }
