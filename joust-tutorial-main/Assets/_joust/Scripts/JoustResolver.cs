@@ -5,7 +5,24 @@ public class JoustResolver : MonoBehaviour
     [SerializeField] GameObject _mountPrefab;
     [SerializeField] Egg _eggPrefab;
 
+    private ScoreManager _scoreManager;
+    private EnemyManager _enemyManager;
+
     bool _dead;
+
+    private void Start()
+    {
+        if(this.gameObject.layer == 3) // 3 is player layer
+        {
+            _enemyManager = this.transform.parent.GetChild(1).GetChild(1).GetComponent<EnemyManager>();
+            _scoreManager = this.transform.parent.GetChild(1).GetChild(3).GetComponent<ScoreManager>();
+        }
+        if(this.gameObject.layer == 6) // common enemy
+        {
+            _enemyManager = GetComponentInParent<EnemyManager>();
+            _scoreManager = this.transform.parent.parent.GetChild(3).GetComponent<ScoreManager>();
+        }
+    }
 
     void OnCollisionEnter2D(Collision2D other)
     {
@@ -21,7 +38,7 @@ public class JoustResolver : MonoBehaviour
         
         if (RemovedEnemy()) return;
 
-        FindObjectOfType<ScoreManager>().KillPlayer(this.gameObject);
+        _scoreManager.KillPlayer(this.gameObject);
         // Destroy(gameObject);
     }
 
@@ -43,7 +60,7 @@ public class JoustResolver : MonoBehaviour
         if (!TryGetComponent<EnemyInputManager>(out var enemyInputManager)) return false;
         SpawnEgg();
         enemyInputManager.enabled = false;
-        FindObjectOfType<EnemyManager>()?.RemoveEnemy(enemyInputManager);
+        _enemyManager?.RemoveEnemy(enemyInputManager);
         return true;
     }
 

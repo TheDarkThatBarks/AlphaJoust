@@ -25,7 +25,7 @@ public class LevelUnitController : UnitController
         {
             inputSignalArray[iSignalArrayIndex] = 0;
             inputSignalArray[iSignalArrayIndex+1] = enemyParent.GetChild(i).transform.position.x;
-            inputSignalArray[iSignalArrayIndex+2] = enemyParent.GetChild(i).transform.position.x;
+            inputSignalArray[iSignalArrayIndex+2] = enemyParent.GetChild(i).transform.position.y;
             iSignalArrayIndex += 3;
 
         }
@@ -49,7 +49,7 @@ public class LevelUnitController : UnitController
         //someMoveDirection = outputSignalArray[0];
         //someMoveSpeed = outputSignalArray[1];
         //...
-        input.FireMoveEvent(new Vector2((float)outputSignalArray[0], (float)outputSignalArray[1]));
+        input.FireMoveEvent(new Vector2(((float)outputSignalArray[0]-0.5f)*2, (float)outputSignalArray[1]));
         if (outputSignalArray[2] == 1)
             input.FireFlapEvent();
 
