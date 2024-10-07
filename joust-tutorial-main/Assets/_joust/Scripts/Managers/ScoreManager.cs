@@ -42,7 +42,7 @@ public class ScoreManager : MonoBehaviour
     public void KillPlayer(GameObject player)
     {
         SoundManager.Instance.PlayKillSound();
-        Destroy(player);
+        player.SetActive(false);
         LoseLife();
     }
 

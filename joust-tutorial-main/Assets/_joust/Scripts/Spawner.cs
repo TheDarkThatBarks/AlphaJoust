@@ -12,7 +12,11 @@ public class Spawner : MonoBehaviour
     {
         Debug.Log("Spawning player");
         SoundManager.Instance.PlayAudioClip(_spawnPlayerSound);
-        var player = Instantiate(_playerPrefab, transform.position, Quaternion.identity);
+        // Destroy player method: var player = Instantiate(_playerPrefab, transform.position, Quaternion.identity);
+        // Deactivate, move, and activate method:
+        var player = _playerPrefab;
+        player.transform.position = transform.position;
+        player.gameObject.SetActive(true);
         player.Init(Random.Range(0f, 100f) > 50f ? Vector3.right : Vector3.left);
         transform.localScale *= 0.1f;
         StartCoroutine(player.ShowSpawnEffect(_spawnPlayerSound.length));
