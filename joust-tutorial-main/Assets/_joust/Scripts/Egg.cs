@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Egg : MonoBehaviour
@@ -13,7 +14,7 @@ public class Egg : MonoBehaviour
         _hatchTimer = _hatchTime;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (!_animator) return;
         _hatchTimer -= Time.deltaTime;
@@ -21,5 +22,7 @@ public class Egg : MonoBehaviour
         {
             _animator.SetBool(Hatching, true);
         }
+        if (transform.position.y < -10)
+            Destroy(gameObject);
     }
 }

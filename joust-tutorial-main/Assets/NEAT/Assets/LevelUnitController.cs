@@ -1,4 +1,5 @@
 using SharpNeat.Phenomes;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,18 +10,19 @@ using UnitySharpNEAT;
 /// </summary>
 public class LevelUnitController : UnitController
 {
-    [SerializeField] private Transform player;
+    [SerializeField] private GameObject player;
     [SerializeField] private PlayerInputManager input;
     [SerializeField] private ScoreManager scoreManager;
+    [SerializeField] private GameManager gameManager;
+    [SerializeField] private EnemyManager enemyManager;
     [SerializeField] private Transform enemyParent;
 
     protected override void UpdateBlackBoxInputs(ISignalArray inputSignalArray)
     {
-        inputSignalArray[0] = scoreManager.Score;
-        inputSignalArray[1] = player.position.x;
-        inputSignalArray[2] = player.position.y;
+        inputSignalArray[0] = player.transform.position.x;
+        inputSignalArray[1] = player.transform.position.y;
 
-        int iSignalArrayIndex = 3;
+        int iSignalArrayIndex = 2;
         for(int i = 0; i < enemyParent.childCount; i++)
         {
             inputSignalArray[iSignalArrayIndex] = 0;
@@ -28,6 +30,10 @@ public class LevelUnitController : UnitController
             inputSignalArray[iSignalArrayIndex+2] = enemyParent.GetChild(i).transform.position.y;
             iSignalArrayIndex += 3;
 
+        }
+        for (int i = iSignalArrayIndex; i < inputSignalArray.Length; i++)
+        {
+            inputSignalArray[iSignalArrayIndex] = 0;
         }
 
         // Called by the base class on FixedUpdate
@@ -49,11 +55,10 @@ public class LevelUnitController : UnitController
         //someMoveDirection = outputSignalArray[0];
         //someMoveSpeed = outputSignalArray[1];
         //...
-        input.FireMoveEvent(new Vector2(((float)outputSignalArray[0]-0.5f)*2, (float)outputSignalArray[1]));
-        if (outputSignalArray[2] == 1)
+        input.FireMoveEvent(new Vector2(((float)outputSignalArray[0]-0.5f)*2, 0));
+        if (outputSignalArray[1] >= 0.5)
             input.FireFlapEvent();
-
-
+        Debug.Log(outputSignalArray[1]);
     }
 
     public override float GetFitness()
@@ -73,5 +78,17 @@ public class LevelUnitController : UnitController
         // Since NeatSupervisor.cs is making use of Object Pooling, this Unit will never get destroyed. 
         // Make sure that when IsActive gets set to false, the variables and the Transform of this Unit are reset!
         // Consider to also disable MeshRenderers until IsActive turns true again.
+        if (newIsActive)
+        {
+            //gameObject.SetActive(true);
+            gameManager.StartGame();
+            gameManager._playerSpawner.SpawnPlayer();
+        }
+        else
+        {
+            scoreManager.KillPlayer(player);
+            enemyManager.DestroyAllEnemies();
+            //gameObject.SetActive(false);
+        }
     }
 }

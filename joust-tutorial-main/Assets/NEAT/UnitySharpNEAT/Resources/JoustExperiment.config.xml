@@ -2,12 +2,12 @@
 
     <Config>
       <ExperimentName>JoustExperiment</ExperimentName>
-      <PopulationSize>5</PopulationSize>
-      <SpecieCount>1</SpecieCount>
+      <PopulationSize>10</PopulationSize>
+      <SpecieCount>3</SpecieCount>
       <Activation>
         <Scheme>Acyclic</Scheme>
       </Activation>
       <ComplexityRegulationStrategy>Absolute</ComplexityRegulationStrategy>
       <ComplexityThreshold>10</ComplexityThreshold>
-      <Description>Cars learn to race around a race track</Description>
+      <Description>AI model learns to play Joust</Description>
     </Config>

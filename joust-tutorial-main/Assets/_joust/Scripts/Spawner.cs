@@ -32,6 +32,7 @@ public class Spawner : MonoBehaviour
         enemy.Init(Random.Range(0f, 100f) > 50f ? Vector3.right : Vector3.left);
         transform.localScale *= 0.1f;
         StartCoroutine(enemy.ShowSpawnEffect(_spawnEnemySound.length));
+        //enemy.transform.localScale = Vector3.one;
         StartCoroutine(ShowSpawnEffect(_spawnEnemySound.length));
         return enemy.gameObject;
     }

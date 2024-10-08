@@ -4,7 +4,7 @@ public class MountDespawner : MonoBehaviour
 {
     [SerializeField] float _boundary = 7f;
 
-    void Update()
+    void FixedUpdate()
     {
         if (Mathf.Abs(transform.position.x) >= _boundary)
         {

@@ -5,7 +5,7 @@ public class Teleporter : MonoBehaviour
 {
     [SerializeField] float _boundary = 6.6f;
 
-    void Update()
+    void FixedUpdate()
     {
         if (ShouldTeleport)
         {

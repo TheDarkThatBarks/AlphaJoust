@@ -61,7 +61,7 @@ public class BirdMover : MonoBehaviour
 
         float time = spawnLength;
         transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-        while (time > 0f && !InputReceived)
+        while (_spriteRenderer && time > 0f && !InputReceived)
         {
             time -= Time.deltaTime;
             _spriteRenderer.material.color = Random.ColorHSV();
@@ -116,7 +116,7 @@ public class BirdMover : MonoBehaviour
         _flapTime = Time.time;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         HandleVerticleMovement();
         HandleHorizontalMovement();

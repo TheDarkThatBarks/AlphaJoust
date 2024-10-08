@@ -34,7 +34,7 @@ public class EnemyInputManager : InputManagerBase, IInputManager
         UnsubscribeFromThunkEvent();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (ShouldFlap)
         {

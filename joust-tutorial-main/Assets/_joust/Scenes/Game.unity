@@ -148,11 +148,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _experimentConfigFileName: JoustExperiment.config
-  _networkInputCount: 15
-  _networkOutputCount: 3
+  _networkInputCount: 150
+  _networkOutputCount: 2
   Trials: 1
-  TrialDuration: 20
-  StoppingFitness: 5000
+  TrialDuration: 60
+  StoppingFitness: 100000
   _unitControllerPrefab: {fileID: 5720085425896047731, guid: 9cae3211290e5114ca303e5fe2a99ad4, type: 3}
   _spawnParent: {fileID: 0}
   _enableDebugLogging: 0

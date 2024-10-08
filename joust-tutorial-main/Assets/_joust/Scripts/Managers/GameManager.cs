@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] EnemyManager _enemyManager;
-    [SerializeField] Spawner _playerSpawner;
+    [SerializeField] public Spawner _playerSpawner;
     [SerializeField] ScoreManager _scoreManager;
     
     public void PlayerMountDespawned()
@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
         UnsubscribeFromEvents();
     }
 
-    void StartGame()
+    public void StartGame()
     {
         _scoreManager.ResetScore();
         SubscribeToEvents();
@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
 
     void StartWave()
     {
-        _enemyManager.SpawnEnemies(_scoreManager.Wave * 2 + 1);
+        _enemyManager.SpawnEnemies(Mathf.Min(_scoreManager.Wave * 2 + 1, 10));
     }
     
     void NextWave()
