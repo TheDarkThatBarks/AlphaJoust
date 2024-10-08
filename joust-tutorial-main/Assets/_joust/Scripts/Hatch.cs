@@ -6,7 +6,7 @@ public class Hatch : MonoBehaviour
 
     public void HatchKnight()
     {
-        Instantiate(_enemyKnightPrefab, transform.position, Quaternion.identity);
+        Instantiate(_enemyKnightPrefab, transform.position, Quaternion.identity, transform.parent);
         Destroy(gameObject);
     }
 }

@@ -51,7 +51,7 @@ public class JoustResolver : MonoBehaviour
     {
         if (_mountPrefab)
         {
-            Instantiate(_mountPrefab, transform.position, transform.rotation);
+            Instantiate(_mountPrefab, transform.position, transform.rotation, transform.parent);
         }   
     }
 
@@ -67,7 +67,7 @@ public class JoustResolver : MonoBehaviour
     void SpawnEgg()
     {
         if (!_eggPrefab) return;
-        var egg = Instantiate(_eggPrefab, transform.position, Quaternion.identity);
+        var egg = Instantiate(_eggPrefab, transform.position, Quaternion.identity, transform.parent.transform);
         if (!egg.TryGetComponent<Rigidbody2D>(out var rb)) return;
         var forceDirection = (transform.eulerAngles == Vector3.zero) ? Vector3.right : Vector3.left;
         rb.AddForce(forceDirection * 1f, ForceMode2D.Impulse);
