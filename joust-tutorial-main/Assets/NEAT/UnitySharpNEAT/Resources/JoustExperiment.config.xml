@@ -2,8 +2,8 @@
 
     <Config>
       <ExperimentName>JoustExperiment</ExperimentName>
-      <PopulationSize>10</PopulationSize>
-      <SpecieCount>3</SpecieCount>
+      <PopulationSize>30</PopulationSize>
+      <SpecieCount>6</SpecieCount>
       <Activation>
         <Scheme>Acyclic</Scheme>
       </Activation>
