@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         SoundManager.Instance.PlayStartSound();
-        StartGame();
+        //StartGame();
     }
 
     void OnDestroy()
@@ -37,9 +37,10 @@ public class GameManager : MonoBehaviour
     {
         _scoreManager.OnLivesChanged += OnLivesChanged;
         _enemyManager.EnemyDestroyed += OnEnemyDestroyed;
+        Debug.Log("SubscribeToEvents");
     }
 
-    void UnsubscribeFromEvents()
+    public void UnsubscribeFromEvents()
     {
         _scoreManager.OnLivesChanged -= OnLivesChanged;
         _enemyManager.EnemyDestroyed -= OnEnemyDestroyed;
@@ -57,6 +58,7 @@ public class GameManager : MonoBehaviour
 
     void OnEnemyDestroyed()
     {
+        Debug.Log("OnEnemyDestroyed");
         if (_enemyManager.EnemiesRemaining < 1)
         {
             NextWave();
@@ -65,11 +67,13 @@ public class GameManager : MonoBehaviour
 
     void StartWave()
     {
+        Debug.Log("Enemies spawned: " + Mathf.Min(_scoreManager.Wave * 2 + 1, 10));
         _enemyManager.SpawnEnemies(Mathf.Min(_scoreManager.Wave * 2 + 1, 10));
     }
     
     void NextWave()
     {
+        Debug.Log("Game Manager Next Wave");
         _scoreManager.NextWave();
         StartWave();
     }

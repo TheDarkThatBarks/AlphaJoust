@@ -56,9 +56,13 @@ public class LevelUnitController : UnitController
         //someMoveSpeed = outputSignalArray[1];
         //...
         input.FireMoveEvent(new Vector2(((float)outputSignalArray[0]-0.5f)*2, 0));
-        if (outputSignalArray[1] >= 0.5)
+        if ((float)outputSignalArray[1] >= 0.5)
+        {
             input.FireFlapEvent();
-        Debug.Log(outputSignalArray[1]);
+            Debug.Log("Flap");
+        }
+        //Debug.Log("Output: " + (float)outputSignalArray[0] + " " + ((float)outputSignalArray[0]-0.5f)*2);
+        //Debug.Log((float)outputSignalArray[1]);
     }
 
     public override float GetFitness()
@@ -89,6 +93,7 @@ public class LevelUnitController : UnitController
             scoreManager.KillPlayer(player);
             enemyManager.DestroyAllEnemies();
             //gameObject.SetActive(false);
+            gameManager.UnsubscribeFromEvents();
         }
     }
 }

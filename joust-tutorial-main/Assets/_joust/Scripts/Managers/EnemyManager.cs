@@ -32,6 +32,8 @@ public class EnemyManager : MonoBehaviour
         _scoreManager.ScoreKill();
         _enemies.Remove(enemyInputManager);
         Destroy(enemyInputManager.gameObject);
+        Debug.Log("RemoveEnemy");
+        Debug.Log(EnemyDestroyed.GetInvocationList().Length);
         EnemyDestroyed();
     }
 
