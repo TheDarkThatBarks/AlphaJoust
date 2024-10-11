@@ -7,6 +7,7 @@
 */
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 namespace UnitySharpNEAT
@@ -36,6 +37,12 @@ namespace UnitySharpNEAT
             if (GUI.Button(new Rect(10, 160, 110, 40), "Delete Saves"))
             {
                 ExperimentIO.DeleteAllSaveFiles(_neatSupervisor.Experiment);
+            }
+            if(GUI.Button(new Rect(10, 210, 110, 40), "Reload App")){
+                SceneManager.LoadScene(0);
+            }
+            if(GUI.Button(new Rect(10, 260, 110, 40), "Quit")){
+                Application.Quit();
             }
 
             GUI.Button(new Rect(10, Screen.height - 70, 110, 60), string.Format("Generation: {0}\nFitness: {1:0.00}", _neatSupervisor.CurrentGeneration, _neatSupervisor.CurrentBestFitness));
